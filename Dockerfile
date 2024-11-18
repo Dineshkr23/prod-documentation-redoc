@@ -19,4 +19,4 @@ EXPOSE 8080
 ENV REDOCLY_AUTH_TOKEN=sk_DtuLsrkUsiZY/eGXei8+G6SMfTA=_xb/MGSGLubk+GMHj8JU3hPDUXJlmgwHzCl4e3BdWUVI=
 
 # Command to run Redocly and serve documentation
-CMD ["sh", "-c", "redocly login --token $REDOCLY_AUTH_TOKEN && redocly preview-docs ./openapi/openapi.yaml --port 8080 --host 0.0.0.0 && rm -f /root/.redocly/credentials"]
+CMD ["sh", "-c", "echo $REDOCLY_AUTH_TOKEN | redocly login && redocly preview-docs ./openapi/openapi.yaml --port 8080 --host 0.0.0.0 && rm -f /root/.redocly/credentials"]
