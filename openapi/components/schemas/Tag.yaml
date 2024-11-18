@@ -1,0 +1,15 @@
+description: Representation of a tag
+type: object
+properties:
+  id:
+    description: Tag id
+    type: integer
+    format: int64
+  name:
+    type: string
+  bg_color_hex:
+    type: string
+    nullable: true
+  text_color_hex:
+    type: string
+    nullable: true

@@ -1,0 +1,128 @@
+get:
+  summary: show details for all pages
+  security: []
+  tags:
+    - pages
+  description: This endpoint allows the client to retrieve details for all Page objects.
+  responses:
+    '200':
+      description: successful
+      content:
+        application/json:
+          example:
+            - id: 5
+              title: An Instant In The Wind
+              slug: trivial_exaggerate
+              description: Excepturi illum tenetur nisi.
+              is_top_level_path: false
+              landing_page: false
+              body_html: null
+              body_json: null
+              body_markdown: Et voluptas cupiditate voluptatibus.
+              processed_html: |+
+                <p>Et voluptas cupiditate voluptatibus.</p>
+
+              social_image:
+                url: null
+              template: contained
+          schema:
+            type: array
+            items:
+              $ref: ..\components\schemas\Page.yaml
+post:
+  summary: pages
+  tags:
+    - pages
+  description: This endpoint allows the client to create a new page.
+  parameters: []
+  responses:
+    '200':
+      description: successful
+      content:
+        application/json:
+          example:
+            id: 7
+            title: Example Page
+            slug: example1
+            description: a new page
+            is_top_level_path: false
+            landing_page: false
+            body_html: null
+            body_json: null
+            body_markdown: |-
+              # Hi, this is a New Page
+              Yep, it's an a new page
+            processed_html: |+
+              <h1>
+                <a name="hi-this-is-a-new-page" href="#hi-this-is-a-new-page">
+                </a>
+                Hi, this is a New Page
+              </h1>
+
+              <p>Yep, it's an a new page</p>
+
+            social_image:
+              url: null
+            template: contained
+    '401':
+      description: unauthorized
+      content:
+        application/json:
+          example:
+            error: unauthorized
+            status: 401
+    '422':
+      description: unprocessable
+      content:
+        application/json:
+          example:
+            id: null
+            title: Example Page
+            slug: example1
+            description: a new page
+            is_top_level_path: false
+            landing_page: false
+            body_html: null
+            body_json: null
+            body_markdown: |-
+              # Hi, this is a New Page
+              Yep, it's an a new page
+            processed_html: null
+            social_image:
+              url: null
+            template: moon
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            title:
+              type: string
+              description: Title of the page
+            slug:
+              type: string
+              description: Used to link to this page in URLs, must be unique and URL-safe
+            description:
+              type: string
+              description: For internal use, helps similar pages from one another
+            body_markdown:
+              type: string
+              description: The text (in markdown) of the ad (required)
+            body_json:
+              type: string
+              description: For JSON pages, the JSON body
+            is_top_level_path:
+              type: boolean
+              description: >-
+                If true, the page is available at '/{slug}' instead of
+                '/page/{slug}', use with caution
+            template:
+              type: string
+              enum:
+                - contained
+                - full_within_layout
+                - nav_bar_included
+                - json
+              default: contained
+              description: Controls what kind of layout the page is rendered in

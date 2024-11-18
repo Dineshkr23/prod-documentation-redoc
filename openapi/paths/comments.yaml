@@ -1,0 +1,64 @@
+get:
+  summary: Comments
+  security: []
+  tags:
+    - comments
+  description: >-
+    This endpoint allows the client to retrieve all comments belonging to an
+    article or podcast episode as threaded conversations.
+
+
+    It will return the all top level comments with their nested comments as
+    threads. See the format specification for further details.
+  operationId: getCommentsByArticleId
+  parameters:
+    - name: a_id
+      in: query
+      required: false
+      description: Article identifier.
+      schema:
+        type: string
+      example: '321'
+    - name: p_id
+      in: query
+      required: false
+      description: Podcast Episode identifier.
+      schema:
+        type: string
+      example: '321'
+  responses:
+    '200':
+      description: A List of Comments
+      content:
+        application/json:
+          example:
+            - type_of: comment
+              id_code: '52'
+              created_at: '2023-04-14T14:45:34Z'
+              body_html: >+
+                <p>Pop-up salvia vhs gluten-free tilde cleanse. Gastropub offal
+                next level. Gluten-free health stumptown kale chips wolf.</p>
+
+              user:
+                name: Luigi "Ryann" \:/ Wuckert
+                username: username410
+                twitter_username: twitter410
+                github_username: github410
+                user_id: 1332
+                website_url: null
+                profile_image: >-
+                  /uploads/user/profile_image/1332/241b2d6f-ec6d-4590-b57f-3a2ce673f9de.jpeg
+                profile_image_90: >-
+                  /uploads/user/profile_image/1332/241b2d6f-ec6d-4590-b57f-3a2ce673f9de.jpeg
+              children: []
+          schema:
+            type: array
+            items:
+              $ref: ..\components\schemas\Comment.yaml
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          example:
+            error: not found
+            status: 404

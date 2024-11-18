@@ -1,0 +1,33 @@
+post:
+  summary: Invite a User
+  tags:
+    - users
+  description: >-
+    This endpoint allows the client to trigger an invitation to the provided
+    email address.
+
+            It requires a token from a user with `super_admin` privileges.
+  operationId: postAdminUsersCreate
+  parameters: []
+  responses:
+    '200':
+      description: Successful
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          example:
+            error: unauthorized
+            status: 401
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          example:
+            error: 'param is missing or the value is empty: email'
+            status: 422
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ..\components\schemas\UserInviteParam.yaml

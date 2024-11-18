@@ -1,0 +1,37 @@
+get:
+  summary: The authenticated user
+  tags:
+    - users
+  description: >-
+    This endpoint allows the client to retrieve information about the
+    authenticated user
+  operationId: getUserMe
+  responses:
+    '200':
+      description: successful
+      content:
+        application/json:
+          example:
+            type_of: user
+            id: 1431
+            username: username480
+            name: Willy "Myron" \:/ Herzog
+            twitter_username: twitter480
+            github_username: github480
+            summary: null
+            location: null
+            website_url: null
+            joined_at: Apr 14, 2023
+            profile_image: >-
+              /uploads/user/profile_image/1431/b547e3a6-5076-44dd-a4f6-9b85022b4e76.jpeg
+          schema:
+            type: object
+            items:
+              $ref: ..\components\schemas\User.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          example:
+            error: unauthorized
+            status: 401

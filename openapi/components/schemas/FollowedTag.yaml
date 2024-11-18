@@ -1,0 +1,16 @@
+description: Representation of a followed tag
+type: object
+properties:
+  id:
+    description: Tag id
+    type: integer
+    format: int64
+  name:
+    type: string
+  points:
+    type: number
+    format: float
+required:
+  - id
+  - name
+  - points

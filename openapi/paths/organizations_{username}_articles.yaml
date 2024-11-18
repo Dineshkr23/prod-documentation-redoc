@@ -1,0 +1,88 @@
+get:
+  summary: Organization's Articles
+  tags:
+    - organizations
+    - articles
+  security: []
+  description: >-
+    This endpoint allows the client to retrieve a list of Articles belonging to
+    the organization
+
+
+    It supports pagination, each page will contain `30` users by default.
+  operationId: getOrgArticles
+  parameters:
+    - name: username
+      in: path
+      required: true
+      schema:
+        type: string
+    - $ref: ..\components\parameters\pageParam.yaml
+    - $ref: ..\components\parameters\perPageParam30to1000.yaml
+  responses:
+    '200':
+      description: An Organization's Articles
+      content:
+        application/json:
+          example:
+            - type_of: article
+              id: 276
+              title: Down to a Sunless Sea195
+              description: >-
+                Scenester occupy swag. Yr godard single-origin coffee biodiesel
+                beard artisan. Wes anderson yolo...
+              readable_publish_date: Apr 14
+              slug: down-to-a-sunless-sea195-51d4
+              path: /org81/down-to-a-sunless-sea195-51d4
+              url: http://localhost:3000/org81/down-to-a-sunless-sea195-51d4
+              comments_count: 0
+              public_reactions_count: 0
+              collection_id: null
+              published_timestamp: '2023-04-14T14:45:38Z'
+              positive_reactions_count: 0
+              cover_image: >-
+                http://localhost:3000/assets/38-3b0c46cc0d5367229799d282c99b2c42f33501201cac1ceb5c643f9ee11f06c6.png
+              social_image: >-
+                http://localhost:3000/assets/38-3b0c46cc0d5367229799d282c99b2c42f33501201cac1ceb5c643f9ee11f06c6.png
+              canonical_url: http://localhost:3000/org81/down-to-a-sunless-sea195-51d4
+              created_at: '2023-04-14T14:45:38Z'
+              edited_at: null
+              crossposted_at: null
+              published_at: '2023-04-14T14:45:38Z'
+              last_comment_at: '2023-04-14T14:45:38Z'
+              reading_time_minutes: 1
+              tag_list:
+                - javascript
+                - html
+                - discuss
+              tags: javascript, html, discuss
+              user:
+                name: Annabell "Tyron" \:/ West
+                username: username453
+                twitter_username: twitter453
+                github_username: github453
+                user_id: 1399
+                website_url: null
+                profile_image: >-
+                  /uploads/user/profile_image/1399/15f1c715-4e10-4f57-9cca-7a2071dfdf23.jpeg
+                profile_image_90: >-
+                  /uploads/user/profile_image/1399/15f1c715-4e10-4f57-9cca-7a2071dfdf23.jpeg
+              organization:
+                name: Schuster LLC
+                username: org81
+                slug: org81
+                profile_image: >-
+                  /uploads/organization/profile_image/334/824e9ec6-b41c-4824-87e8-ae7721868787.png
+                profile_image_90: >-
+                  /uploads/organization/profile_image/334/824e9ec6-b41c-4824-87e8-ae7721868787.png
+          schema:
+            type: array
+            items:
+              $ref: ..\components\schemas\ArticleIndex.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          example:
+            error: not found
+            status: 404

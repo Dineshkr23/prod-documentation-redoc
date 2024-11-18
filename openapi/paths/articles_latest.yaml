@@ -1,0 +1,165 @@
+get:
+  summary: Published articles sorted by published date
+  security: []
+  tags:
+    - articles
+  description: >-
+    This endpoint allows the client to retrieve a list of articles. ordered by
+    descending publish date.
+
+
+    It supports pagination, each page will contain 30 articles by default.
+  operationId: getLatestArticles
+  parameters:
+    - $ref: ..\components\parameters\pageParam.yaml
+    - $ref: ..\components\parameters\perPageParam30to1000.yaml
+  responses:
+    '200':
+      description: A List of Articles
+      content:
+        application/json:
+          example:
+            - type_of: article
+              id: 257
+              title: East of Eden178
+              description: >-
+                Readymade diy ennui humblebrag 8-bit. Brooklyn hoodie pickled
+                art party vinyl small batch roof. 8-bit...
+              readable_publish_date: Apr 14
+              slug: east-of-eden178-3on4
+              path: /username390/east-of-eden178-3on4
+              url: http://localhost:3000/username390/east-of-eden178-3on4
+              comments_count: 0
+              public_reactions_count: 0
+              collection_id: null
+              published_timestamp: '2023-04-14T14:45:32Z'
+              positive_reactions_count: 0
+              cover_image: >-
+                http://localhost:3000/assets/16-77521848e7b5fcc073ac3e0bb004826e97f737238194e4c79330f662cc946ab2.png
+              social_image: >-
+                http://localhost:3000/assets/16-77521848e7b5fcc073ac3e0bb004826e97f737238194e4c79330f662cc946ab2.png
+              canonical_url: http://localhost:3000/username390/east-of-eden178-3on4
+              created_at: '2023-04-14T14:45:32Z'
+              edited_at: null
+              crossposted_at: null
+              published_at: '2023-04-14T14:45:32Z'
+              last_comment_at: '2023-04-14T14:45:32Z'
+              reading_time_minutes: 1
+              tag_list:
+                - javascript
+                - html
+                - discuss
+              tags: javascript, html, discuss
+              user:
+                name: Starla "Eric" \:/ Kunde
+                username: username390
+                twitter_username: twitter390
+                github_username: github390
+                user_id: 1311
+                website_url: null
+                profile_image: >-
+                  /uploads/user/profile_image/1311/11a4ee42-e02e-4b2f-87c1-6123579350b7.jpeg
+                profile_image_90: >-
+                  /uploads/user/profile_image/1311/11a4ee42-e02e-4b2f-87c1-6123579350b7.jpeg
+              flare_tag:
+                name: discuss
+                bg_color_hex: '#000000'
+                text_color_hex: '#ffffff'
+            - type_of: article
+              id: 256
+              title: A Many-Splendoured Thing177
+              description: >-
+                Letterpress neutra vice raw denim mumblecore organic small
+                batch. Bushwick viral freegan photo booth...
+              readable_publish_date: Apr 14
+              slug: a-many-splendoured-thing177-314b
+              path: /username389/a-many-splendoured-thing177-314b
+              url: >-
+                http://localhost:3000/username389/a-many-splendoured-thing177-314b
+              comments_count: 0
+              public_reactions_count: 0
+              collection_id: null
+              published_timestamp: '2023-04-14T14:45:32Z'
+              positive_reactions_count: 0
+              cover_image: >-
+                http://localhost:3000/assets/27-441873f471d98b5358beff7d47a211e58b9979c6453794f9a7abfd5709c33322.png
+              social_image: >-
+                http://localhost:3000/assets/27-441873f471d98b5358beff7d47a211e58b9979c6453794f9a7abfd5709c33322.png
+              canonical_url: >-
+                http://localhost:3000/username389/a-many-splendoured-thing177-314b
+              created_at: '2023-04-14T14:45:32Z'
+              edited_at: null
+              crossposted_at: null
+              published_at: '2023-04-14T14:45:32Z'
+              last_comment_at: '2023-04-14T14:45:32Z'
+              reading_time_minutes: 1
+              tag_list:
+                - javascript
+                - html
+                - discuss
+              tags: javascript, html, discuss
+              user:
+                name: Jeanne "Donnette" \:/ Waelchi
+                username: username389
+                twitter_username: twitter389
+                github_username: github389
+                user_id: 1310
+                website_url: null
+                profile_image: >-
+                  /uploads/user/profile_image/1310/67d345a8-f64b-407f-a802-6f5286b5c4a2.jpeg
+                profile_image_90: >-
+                  /uploads/user/profile_image/1310/67d345a8-f64b-407f-a802-6f5286b5c4a2.jpeg
+              flare_tag:
+                name: discuss
+                bg_color_hex: '#000000'
+                text_color_hex: '#ffffff'
+            - type_of: article
+              id: 255
+              title: What's Become of Waring176
+              description: >-
+                Whatever church-key irony next level tacos banh mi. Brooklyn
+                wayfarers occupy tacos austin marfa...
+              readable_publish_date: Apr 14
+              slug: whats-become-of-waring176-2lgk
+              path: /username388/whats-become-of-waring176-2lgk
+              url: http://localhost:3000/username388/whats-become-of-waring176-2lgk
+              comments_count: 0
+              public_reactions_count: 0
+              collection_id: null
+              published_timestamp: '2023-04-14T14:45:32Z'
+              positive_reactions_count: 0
+              cover_image: >-
+                http://localhost:3000/assets/31-2a89a91581ce9080fed8d62dd9c70a3fd5f92472da8c023e7b29256e04811b2e.png
+              social_image: >-
+                http://localhost:3000/assets/31-2a89a91581ce9080fed8d62dd9c70a3fd5f92472da8c023e7b29256e04811b2e.png
+              canonical_url: http://localhost:3000/username388/whats-become-of-waring176-2lgk
+              created_at: '2023-04-14T14:45:32Z'
+              edited_at: null
+              crossposted_at: null
+              published_at: '2023-04-14T14:45:32Z'
+              last_comment_at: '2023-04-14T14:45:32Z'
+              reading_time_minutes: 1
+              tag_list:
+                - javascript
+                - html
+                - discuss
+              tags: javascript, html, discuss
+              user:
+                name: Jerrell "Essie" \:/ Runolfsdottir
+                username: username388
+                twitter_username: twitter388
+                github_username: github388
+                user_id: 1309
+                website_url: null
+                profile_image: >-
+                  /uploads/user/profile_image/1309/eaae0231-0ff6-49da-960c-cd30e2486bed.jpeg
+                profile_image_90: >-
+                  /uploads/user/profile_image/1309/eaae0231-0ff6-49da-960c-cd30e2486bed.jpeg
+              flare_tag:
+                name: discuss
+                bg_color_hex: '#000000'
+                text_color_hex: '#ffffff'
+          schema:
+            type: array
+            items:
+              $ref: ..\components\schemas\ArticleIndex.yaml

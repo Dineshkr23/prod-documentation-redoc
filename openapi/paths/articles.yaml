@@ -1,0 +1,253 @@
+post:
+  summary: Publish article
+  tags:
+    - articles
+  description: >-
+    This endpoint allows the client to create a new article.
+
+
+    "Articles" are all the posts that users create on DEV that typically show up
+    in the feed. They can be a blog post, a discussion question, a help thread
+    etc. but is referred to as article within the code.
+  operationId: createArticle
+  parameters: []
+  responses:
+    '201':
+      description: An Article
+      content:
+        application/json:
+          example:
+            type_of: article
+            id: 251
+            title: New article
+            description: New post example
+            readable_publish_date: Apr 14
+            slug: new-article-4aca
+            path: /username383/new-article-4aca
+            url: http://localhost:3000/username383/new-article-4aca
+            comments_count: 0
+            public_reactions_count: 0
+            collection_id: 11
+            published_timestamp: '2023-04-14T14:45:32Z'
+            positive_reactions_count: 0
+            cover_image: >-
+              https://thepracticaldev.s3.amazonaws.com/i/5wfo25724gzgk5e5j50g.jpg
+            social_image: >-
+              https://thepracticaldev.s3.amazonaws.com/i/5wfo25724gzgk5e5j50g.jpg
+            canonical_url: >-
+              https://dev.to/fdocr/headless-chrome-dual-mode-tests-for-ruby-on-rails-4p6g
+            created_at: '2023-04-14T14:45:32Z'
+            edited_at: null
+            crossposted_at: null
+            published_at: '2023-04-14T14:45:32Z'
+            last_comment_at: '2023-04-14T14:45:32Z'
+            reading_time_minutes: 1
+            tag_list: ''
+            tags: []
+            body_html: |+
+              <p><strong>New</strong> body for the article</p>
+
+            body_markdown: '**New** body for the article'
+            user:
+              name: Nu "Otis" \:/ Stehr
+              username: username383
+              twitter_username: twitter383
+              github_username: github383
+              user_id: 1304
+              website_url: null
+              profile_image: >-
+                /uploads/user/profile_image/1304/ceaf627b-1551-4771-8d35-a93b40989584.jpeg
+              profile_image_90: >-
+                /uploads/user/profile_image/1304/ceaf627b-1551-4771-8d35-a93b40989584.jpeg
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          example:
+            error: unauthorized
+            status: 401
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          example:
+            error: 'param is missing or the value is empty: article'
+            status: 422
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ..\components\schemas\Article.yaml
+get:
+  summary: Published articles
+  security: []
+  tags:
+    - articles
+  description: |-
+    This endpoint allows the client to retrieve a list of articles.
+
+    "Articles" are all the posts that users create on DEV that typically
+    show up in the feed. They can be a blog post, a discussion question,
+    a help thread etc. but is referred to as article within the code.
+
+    By default it will return featured, published articles ordered
+    by descending popularity.
+
+    It supports pagination, each page will contain `30` articles by default.
+  operationId: getArticles
+  parameters:
+    - $ref: ..\components\parameters\pageParam.yaml
+    - $ref: ..\components\parameters\perPageParam30to1000.yaml
+    - name: tag
+      in: query
+      required: false
+      description: >-
+        Using this parameter will retrieve articles that contain the requested
+        tag. Articles
+
+        will be ordered by descending popularity.This parameter can be used in
+        conjuction with `top`.
+      schema:
+        type: string
+      example: discuss
+    - name: tags
+      in: query
+      required: false
+      description: >-
+        Using this parameter will retrieve articles with any of the
+        comma-separated tags.
+
+        Articles will be ordered by descending popularity.
+      schema:
+        type: string
+      example: javascript, css
+    - name: tags_exclude
+      in: query
+      required: false
+      description: >-
+        Using this parameter will retrieve articles that do _not_ contain _any_
+
+        of comma-separated tags. Articles will be ordered by descending
+        popularity.
+      schema:
+        type: string
+      example: node, java
+    - name: username
+      in: query
+      required: false
+      description: |-
+        Using this parameter will retrieve articles belonging
+                    to a User or Organization ordered by descending publication date.
+                    If `state=all` the number of items returned will be `1000` instead of the default `30`.
+                    This parameter can be used in conjuction with `state`.
+      schema:
+        type: string
+      example: ben
+    - name: state
+      in: query
+      required: false
+      description: >-
+        Using this parameter will allow the client to check which articles are
+        fresh or rising.
+                    If `state=fresh` the server will return fresh articles.
+                    If `state=rising` the server will return rising articles.
+                    This param can be used in conjuction with `username`, only if set to `all`.
+      schema:
+        type: string
+        enum:
+          - fresh
+          - rising
+          - all
+      example: fresh
+    - name: top
+      in: query
+      required: false
+      description: >-
+        Using this parameter will allow the client to return the most popular
+        articles
+
+        in the last `N` days.
+
+        `top` indicates the number of days since publication of the articles
+        returned.
+
+        This param can be used in conjuction with `tag`.
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+      example: 2
+    - name: collection_id
+      in: query
+      required: false
+      description: >-
+        Adding this will allow the client to return the list of articles
+
+        belonging to the requested collection, ordered by ascending publication
+        date.
+      schema:
+        type: integer
+        format: int32
+      example: 99
+  responses:
+    '200':
+      description: A List of Articles
+      content:
+        application/json:
+          example:
+            - type_of: article
+              id: 254
+              title: All the King's Men175
+              description: >-
+                Typewriter crucifix forage. Pug put a bird on it art party
+                taxidermy asymmetrical xoxo. Sustainable...
+              readable_publish_date: Apr 14
+              slug: all-the-kings-men175-794
+              path: /username387/all-the-kings-men175-794
+              url: http://localhost:3000/username387/all-the-kings-men175-794
+              comments_count: 0
+              public_reactions_count: 0
+              collection_id: null
+              published_timestamp: '2023-04-14T14:45:32Z'
+              positive_reactions_count: 0
+              cover_image: >-
+                http://localhost:3000/assets/36-83d24fbff858b9dd4035d1e7d2df14090946ae4fed631055fc1d5862e7018348.png
+              social_image: >-
+                http://localhost:3000/assets/36-83d24fbff858b9dd4035d1e7d2df14090946ae4fed631055fc1d5862e7018348.png
+              canonical_url: http://localhost:3000/username387/all-the-kings-men175-794
+              created_at: '2023-04-14T14:45:32Z'
+              edited_at: null
+              crossposted_at: null
+              published_at: '2023-04-14T14:45:32Z'
+              last_comment_at: '2023-04-14T14:45:32Z'
+              reading_time_minutes: 1
+              tag_list:
+                - discuss
+              tags: discuss
+              user:
+                name: Versie "Luana" \:/ Runolfsson
+                username: username387
+                twitter_username: twitter387
+                github_username: github387
+                user_id: 1308
+                website_url: null
+                profile_image: >-
+                  /uploads/user/profile_image/1308/dfa25219-dfea-4d9a-93ec-403a5f51a29e.jpeg
+                profile_image_90: >-
+                  /uploads/user/profile_image/1308/dfa25219-dfea-4d9a-93ec-403a5f51a29e.jpeg
+              organization:
+                name: Ledner, Jaskolski and Bednar
+                username: org70
+                slug: org70
+                profile_image: >-
+                  /uploads/organization/profile_image/295/216d3fb5-bd3c-459a-a9d8-572e8332fd88.png
+                profile_image_90: >-
+                  /uploads/organization/profile_image/295/216d3fb5-bd3c-459a-a9d8-572e8332fd88.png
+              flare_tag:
+                name: discuss
+                bg_color_hex: '#000000'
+                text_color_hex: '#ffffff'
+          schema:
+            type: array
+            items:
+              $ref: ..\components\schemas\ArticleIndex.yaml

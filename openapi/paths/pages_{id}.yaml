@@ -1,0 +1,171 @@
+get:
+  summary: show details for a page
+  security: []
+  tags:
+    - pages
+  description: >-
+    This endpoint allows the client to retrieve details for a single Page
+    object, specified by ID.
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: The ID of the page.
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+      example: 1
+  responses:
+    '200':
+      description: successful
+      content:
+        application/json:
+          example:
+            id: 10
+            title: A Swiftly Tilting Planet
+            slug: corn-laser
+            description: Inventore ad qui dolore.
+            is_top_level_path: false
+            landing_page: false
+            body_html: null
+            body_json: null
+            body_markdown: In sit sit voluptas.
+            processed_html: |+
+              <p>In sit sit voluptas.</p>
+
+            social_image:
+              url: null
+            template: contained
+          schema:
+            $ref: ..\components\schemas\Page.yaml
+put:
+  summary: update details for a page
+  tags:
+    - pages
+  description: >-
+    This endpoint allows the client to retrieve details for a single Page
+    object, specified by ID.
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: The ID of the page.
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+      example: 1
+  responses:
+    '200':
+      description: successful
+      content:
+        application/json:
+          example:
+            id: 11
+            title: New Title
+            slug: authority-figure
+            description: Et odio nostrum dolorem.
+            is_top_level_path: false
+            landing_page: false
+            body_html: null
+            body_json: null
+            body_markdown: Consequatur ex soluta libero.
+            processed_html: |+
+              <p>Consequatur ex soluta libero.</p>
+
+            social_image:
+              url: null
+            template: contained
+          schema:
+            $ref: ..\components\schemas\Page.yaml
+    '401':
+      description: unauthorized
+      content:
+        application/json:
+          example:
+            error: unauthorized
+            status: 401
+    '422':
+      description: unprocessable
+      content:
+        application/json:
+          example:
+            id: 13
+            title: Little Hands Clapping
+            slug: horizon_nursery
+            description: Vel tenetur aspernatur mollitia.
+            is_top_level_path: false
+            landing_page: false
+            body_html: null
+            body_json: null
+            body_markdown: Omnis quia eaque aliquam.
+            processed_html: |+
+              <p>Consequatur sit illum voluptas.</p>
+
+            social_image:
+              url: null
+            template: moon
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ..\components\schemas\Page.yaml
+delete:
+  summary: remove a page
+  tags:
+    - pages
+  description: >-
+    This endpoint allows the client to delete a single Page object, specified by
+    ID.
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: The ID of the page.
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+      example: 1
+  responses:
+    '200':
+      description: successful
+      content:
+        application/json:
+          example:
+            id: 14
+            title: The Skull Beneath the Skin
+            slug: appointment-provision
+            description: Et error fuga natus.
+            is_top_level_path: false
+            landing_page: false
+            body_html: null
+            body_json: null
+            body_markdown: Quo quibusdam nisi numquam.
+            processed_html: |+
+              <p>Quo quibusdam nisi numquam.</p>
+
+            social_image:
+              url: null
+            template: contained
+          schema:
+            $ref: ..\components\schemas\Page.yaml
+    '401':
+      description: unauthorized
+      content:
+        application/json:
+          example:
+            error: unauthorized
+            status: 401
+    '422':
+      description: unprocessable
+      content:
+        application/json:
+          example:
+            doubled_module:
+              const_name: Page
+              object: Page
+            __expired: false
+            name: null
+            __sending_message: null

@@ -1,0 +1,103 @@
+get:
+  summary: display ads
+  tags:
+    - display ads
+  description: This endpoint allows the client to retrieve a list of all display ads.
+  responses:
+    '200':
+      description: successful
+      content:
+        application/json:
+          example: []
+          schema:
+            type: array
+            items:
+              $ref: ..\components\schemas\DisplayAd.yaml
+    '401':
+      description: unauthorized
+      content:
+        application/json:
+          example:
+            error: unauthorized
+            status: 401
+post:
+  summary: display ads
+  tags:
+    - display ads
+  description: This endpoint allows the client to create a new display ad.
+  parameters: []
+  responses:
+    '200':
+      description: successful
+      content:
+        application/json:
+          example:
+            id: 193
+            approved: true
+            body_markdown: |-
+              # Hi, this is ad
+              Yep, it's an ad
+            cached_tag_list: ''
+            clicks_count: 0
+            created_at: '2023-04-14T18:45:35.606+04:00'
+            creator_id: null
+            display_to: all
+            exclude_article_ids: ''
+            impressions_count: 0
+            name: Example Ad
+            organization_id: null
+            placement_area: post_comments
+            processed_html: >-
+              <h1>  <a href="#hi-this-is-ad" class="anchor">  </a>  Hi, this is
+              ad</h1><p>Yep, it's an ad</p>
+            published: true
+            success_rate: 0
+            type_of: in_house
+            updated_at: '2023-04-14T18:45:35.606+04:00'
+            audience_segment_type: null
+            tag_list: ''
+          schema:
+            type: object
+            items:
+              $ref: ..\components\schemas\DisplayAd.yaml
+    '401':
+      description: unauthorized
+      content:
+        application/json:
+          example:
+            error: unauthorized
+            status: 401
+    '422':
+      description: unprocessable
+      content:
+        application/json:
+          example:
+            id: null
+            approved: true
+            body_markdown: |-
+              # Hi, this is ad
+              Yep, it's an ad
+            cached_tag_list: null
+            clicks_count: 0
+            created_at: null
+            creator_id: null
+            display_to: all
+            exclude_article_ids: ''
+            impressions_count: 0
+            name: Example Ad
+            organization_id: null
+            placement_area: moon
+            processed_html: null
+            published: true
+            success_rate: 0
+            type_of: in_house
+            updated_at: null
+            audience_segment_type: null
+            tag_list: null
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          items:
+            $ref: ..\components\schemas\DisplayAd.yaml

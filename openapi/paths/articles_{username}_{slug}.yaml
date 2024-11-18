@@ -1,0 +1,118 @@
+get:
+  summary: Published article by path
+  security: []
+  tags:
+    - articles
+  description: >-
+    This endpoint allows the client to retrieve a single published article given
+    its `path`.
+  operationId: getArticleByPath
+  parameters:
+    - name: username
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: slug
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: An Article
+      content:
+        application/json:
+          example:
+            type_of: article
+            id: 262
+            title: Noli Me Tangere183
+            description: >-
+              Normcore williamsburg try-hard artisan. Vinyl park shoreditch
+              gastropub vegan knausgaard.  Ethical...
+            readable_publish_date: Apr 14
+            slug: noli-me-tangere183-1lj5
+            path: /username396/noli-me-tangere183-1lj5
+            url: http://localhost:3000/username396/noli-me-tangere183-1lj5
+            comments_count: 0
+            public_reactions_count: 0
+            collection_id: null
+            published_timestamp: '2023-04-14T14:45:33Z'
+            positive_reactions_count: 0
+            cover_image: >-
+              http://localhost:3000/assets/37-94b286825ffd9f2b47c9842cf4f262b7c89e789797eba40196bc14b5c2359e75.png
+            social_image: >-
+              http://localhost:3000/assets/37-94b286825ffd9f2b47c9842cf4f262b7c89e789797eba40196bc14b5c2359e75.png
+            canonical_url: http://localhost:3000/username396/noli-me-tangere183-1lj5
+            created_at: '2023-04-14T14:45:33Z'
+            edited_at: null
+            crossposted_at: null
+            published_at: '2023-04-14T14:45:33Z'
+            last_comment_at: '2023-04-14T14:45:33Z'
+            reading_time_minutes: 1
+            tag_list: discuss
+            tags:
+              - discuss
+            body_html: >+
+              <p>Normcore williamsburg try-hard artisan. Vinyl park shoreditch
+              gastropub vegan knausgaard.</p>
+
+
+              <p>Ethical trust fund intelligentsia pbr&amp;b. Brunch seitan pug
+              waistcoat farm-to-table flexitarian health. Tumblr banh mi goth
+              retro diy.</p>
+
+            body_markdown: >+
+              ---
+
+              title: Noli Me Tangere183
+
+              published: true
+
+              tags: discuss
+
+              date: 
+
+              series: 
+
+              canonical_url: 
+
+
+              ---
+
+
+              Normcore williamsburg try-hard artisan. Vinyl park shoreditch
+              gastropub vegan knausgaard.
+
+
+
+              Ethical trust fund intelligentsia pbr&b. Brunch seitan pug
+              waistcoat farm-to-table flexitarian health. Tumblr banh mi goth
+              retro diy.
+
+            user:
+              name: Ashely "Erich" \:/ Waters
+              username: username396
+              twitter_username: twitter396
+              github_username: github396
+              user_id: 1317
+              website_url: null
+              profile_image: >-
+                /uploads/user/profile_image/1317/e7282d93-954d-4b13-805e-9e5636ad9d63.jpeg
+              profile_image_90: >-
+                /uploads/user/profile_image/1317/e7282d93-954d-4b13-805e-9e5636ad9d63.jpeg
+            flare_tag:
+              name: discuss
+              bg_color_hex: '#000000'
+              text_color_hex: '#ffffff'
+          schema:
+            type: object
+            items:
+              $ref: ..\components\schemas\ArticleIndex.yaml
+    '404':
+      description: Article Not Found
+      content:
+        application/json:
+          example:
+            error: not found
+            status: 404

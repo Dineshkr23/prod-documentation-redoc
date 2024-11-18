@@ -1,0 +1,40 @@
+get:
+  summary: Tags
+  tags:
+    - tags
+  security: []
+  description: >-
+    This endpoint allows the client to retrieve a list of tags that can be used
+    to tag articles.
+
+
+    It will return tags ordered by popularity.
+
+
+    It supports pagination, each page will contain 10 tags by default.
+  operationId: getTags
+  parameters:
+    - $ref: ..\components\parameters\pageParam.yaml
+    - $ref: ..\components\parameters\perPageParam10to1000.yaml
+  responses:
+    '200':
+      description: A List of all tags
+      content:
+        application/json:
+          example:
+            - id: 806
+              name: tag5
+              bg_color_hex: null
+              text_color_hex: null
+            - id: 808
+              name: tag6
+              bg_color_hex: null
+              text_color_hex: null
+            - id: 809
+              name: tag7
+              bg_color_hex: null
+              text_color_hex: null
+          schema:
+            type: array
+            items:
+              $ref: ..\components\schemas\Tag.yaml

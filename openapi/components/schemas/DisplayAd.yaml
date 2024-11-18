@@ -1,0 +1,90 @@
+description: A Display Ad, aka Billboard, aka Widget
+type: object
+properties:
+  id:
+    type: integer
+    description: The ID of the Display Ad
+  name:
+    type: string
+    description: For internal use, helps distinguish ads from one another
+  body_markdown:
+    type: string
+    description: The text (in markdown) of the ad (required)
+  approved:
+    type: boolean
+    description: Ad must be both published and approved to be in rotation
+  published:
+    type: boolean
+    description: Ad must be both published and approved to be in rotation
+  organization_id:
+    type: integer
+    description: Identifies the organization to which the ad belongs
+    nullable: true
+  creator_id:
+    type: integer
+    description: Identifies the user who created the ad.
+    nullable: true
+  placement_area:
+    type: string
+    enum:
+      - sidebar_left
+      - sidebar_left_2
+      - sidebar_right
+      - feed_first
+      - feed_second
+      - feed_third
+      - post_sidebar
+      - post_comments
+    description: Identifies which area of site layout the ad can appear in
+  tag_list:
+    type: string
+    description: Tags on which this ad can be displayed (blank is all/any tags)
+  article_exclude_ids:
+    type: string
+    nullable: true
+    description: >-
+      Articles this ad should *not* appear on (blank means no articles are
+      disallowed, and this ad can appear next to any/all articles).
+      Comma-separated list of integer Article IDs
+  audience_segment_type:
+    type: string
+    enum:
+      - testing
+      - trusted
+      - posted
+      - no_posts_yet
+      - dark_theme
+      - light_theme
+      - no_experience
+      - experience1
+      - experience2
+      - experience3
+      - experience4
+      - experience5
+    description: >-
+      Specifies an group of users to show this ad to (only works with logged-in
+      users)
+  display_to:
+    type: string
+    enum:
+      - all
+      - logged_in
+      - logged_out
+    default: all
+    description: Potentially limits visitors to whom the ad is visible
+  type_of:
+    type: string
+    enum:
+      - in_house
+      - community
+      - external
+    default: in_house
+    description: |
+      Types of the billboards:
+      in_house (created by admins),
+      community (created by an entity, appears on entity's content),
+      external ( created by an entity, or a non-entity, can appear everywhere)
+required:
+  - name
+  - body_markdown
+  - placement_area

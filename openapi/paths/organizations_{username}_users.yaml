@@ -1,0 +1,62 @@
+get:
+  summary: Organization's users
+  tags:
+    - organizations
+    - users
+  security: []
+  description: >-
+    This endpoint allows the client to retrieve a list of users belonging to the
+    organization
+
+
+    It supports pagination, each page will contain `30` users by default.
+  operationId: getOrgUsers
+  parameters:
+    - name: username
+      in: path
+      required: true
+      schema:
+        type: string
+    - $ref: ..\components\parameters\pageParam.yaml
+    - $ref: ..\components\parameters\perPageParam30to1000.yaml
+  responses:
+    '200':
+      description: An Organization's users
+      content:
+        application/json:
+          example:
+            - type_of: user
+              id: 1390
+              username: username445
+              name: Ute "Doreen" \:/ Tillman
+              twitter_username: twitter445
+              github_username: github445
+              summary: null
+              location: null
+              website_url: null
+              joined_at: Apr 14, 2023
+              profile_image: >-
+                /uploads/user/profile_image/1390/7b885cdf-c1c6-481a-a6d8-19f0404da87a.jpeg
+            - type_of: user
+              id: 1391
+              username: username446
+              name: Abraham "Colton" \:/ Ritchie
+              twitter_username: twitter446
+              github_username: github446
+              summary: null
+              location: null
+              website_url: null
+              joined_at: Apr 14, 2023
+              profile_image: >-
+                /uploads/user/profile_image/1391/273ffa06-dc97-4b84-ba4c-43d24efb55e5.jpeg
+          schema:
+            type: array
+            items:
+              $ref: ..\components\schemas\User.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          example:
+            error: not found
+            status: 404

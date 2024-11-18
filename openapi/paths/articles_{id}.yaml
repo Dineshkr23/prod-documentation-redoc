@@ -1,0 +1,212 @@
+get:
+  summary: Published article by id
+  security: []
+  tags:
+    - articles
+  description: >-
+    This endpoint allows the client to retrieve a single published article given
+    its `id`.
+  operationId: getArticleById
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: An Article
+      content:
+        application/json:
+          example:
+            type_of: article
+            id: 258
+            title: Pale Kings and Princes179
+            description: >-
+              Etsy you probably haven't heard of them carry humblebrag 90's
+              try-hard. Distillery asymmetrical...
+            readable_publish_date: Apr 14
+            slug: pale-kings-and-princes179-381c
+            path: /username391/pale-kings-and-princes179-381c
+            url: http://localhost:3000/username391/pale-kings-and-princes179-381c
+            comments_count: 0
+            public_reactions_count: 0
+            collection_id: null
+            published_timestamp: '2023-04-14T14:45:32Z'
+            positive_reactions_count: 0
+            cover_image: >-
+              http://localhost:3000/assets/19-ed58d3e8defcefc445020631589697a05e725243e834b5192aee4e6b91a3e927.png
+            social_image: >-
+              http://localhost:3000/assets/19-ed58d3e8defcefc445020631589697a05e725243e834b5192aee4e6b91a3e927.png
+            canonical_url: http://localhost:3000/username391/pale-kings-and-princes179-381c
+            created_at: '2023-04-14T14:45:32Z'
+            edited_at: null
+            crossposted_at: null
+            published_at: '2023-04-14T14:45:32Z'
+            last_comment_at: '2023-04-14T14:45:32Z'
+            reading_time_minutes: 1
+            tag_list: discuss
+            tags:
+              - discuss
+            body_html: >+
+              <p>Etsy you probably haven't heard of them carry humblebrag 90's
+              try-hard. Distillery asymmetrical godard trust fund quinoa pug
+              paleo. Letterpress green juice plaid.</p>
+
+
+              <p>Organic +1 pour-over banh mi disrupt listicle. Cronut offal
+              flexitarian twee health poutine cred. Hashtag godard church-key
+              etsy put a bird on it.</p>
+
+            body_markdown: >+
+              ---
+
+              title: Pale Kings and Princes179
+
+              published: true
+
+              tags: discuss
+
+              date: 
+
+              series: 
+
+              canonical_url: 
+
+
+              ---
+
+
+              Etsy you probably haven't heard of them carry humblebrag 90's
+              try-hard. Distillery asymmetrical godard trust fund quinoa pug
+              paleo. Letterpress green juice plaid.
+
+
+
+              Organic +1 pour-over banh mi disrupt listicle. Cronut offal
+              flexitarian twee health poutine cred. Hashtag godard church-key
+              etsy put a bird on it.
+
+            user:
+              name: Val "Antonina" \:/ Gleichner
+              username: username391
+              twitter_username: twitter391
+              github_username: github391
+              user_id: 1312
+              website_url: null
+              profile_image: >-
+                /uploads/user/profile_image/1312/2eec3cd5-e7fe-42ac-bbfa-27c84d847596.jpeg
+              profile_image_90: >-
+                /uploads/user/profile_image/1312/2eec3cd5-e7fe-42ac-bbfa-27c84d847596.jpeg
+            flare_tag:
+              name: discuss
+              bg_color_hex: '#000000'
+              text_color_hex: '#ffffff'
+          schema:
+            type: object
+            items:
+              $ref: ..\components\schemas\ArticleIndex.yaml
+    '404':
+      description: Article Not Found
+      content:
+        application/json:
+          example:
+            error: not found
+            status: 404
+put:
+  summary: Update an article by id
+  tags:
+    - articles
+  description: >-
+    This endpoint allows the client to update an existing article.
+
+
+    "Articles" are all the posts that users create on DEV that typically show up
+    in the feed. They can be a blog post, a discussion question, a help thread
+    etc. but is referred to as article within the code.
+  operationId: updateArticle
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: The ID of the user to unpublish.
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+      example: 123
+  responses:
+    '200':
+      description: An Article
+      content:
+        application/json:
+          example:
+            type_of: article
+            id: 259
+            title: Noli Me Tangere180
+            description: >-
+              Hoodie meh knausgaard bespoke actually shabby chic polaroid.
+              Tumblr ennui semiotics freegan diy...
+            readable_publish_date: Apr 14
+            slug: noli-me-tangere180-55bp
+            path: /username392/noli-me-tangere180-55bp
+            url: http://localhost:3000/username392/noli-me-tangere180-55bp
+            comments_count: 0
+            public_reactions_count: 0
+            collection_id: null
+            published_timestamp: '2023-04-14T14:45:33Z'
+            positive_reactions_count: 0
+            cover_image: >-
+              http://localhost:3000/assets/3-93b6b57b5a6115cffe5d63d29a22825eb9e65f647bfef57a88244bc2b98186f0.png
+            social_image: >-
+              http://localhost:3000/assets/3-93b6b57b5a6115cffe5d63d29a22825eb9e65f647bfef57a88244bc2b98186f0.png
+            canonical_url: http://localhost:3000/username392/noli-me-tangere180-55bp
+            created_at: '2023-04-14T14:45:33Z'
+            edited_at: '2023-04-14T14:45:33Z'
+            crossposted_at: null
+            published_at: '2023-04-14T14:45:33Z'
+            last_comment_at: '2023-04-14T14:45:33Z'
+            reading_time_minutes: 1
+            tag_list: ''
+            tags: []
+            body_html: |+
+              <p><strong>New</strong> body for the article</p>
+
+            body_markdown: '**New** body for the article'
+            user:
+              name: Lai "Aide" \:/ Will
+              username: username392
+              twitter_username: twitter392
+              github_username: github392
+              user_id: 1313
+              website_url: null
+              profile_image: >-
+                /uploads/user/profile_image/1313/731805e8-95f2-4260-89f1-489df0c9e945.jpeg
+              profile_image_90: >-
+                /uploads/user/profile_image/1313/731805e8-95f2-4260-89f1-489df0c9e945.jpeg
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          example:
+            error: unauthorized
+            status: 401
+    '404':
+      description: Article Not Found
+      content:
+        application/json:
+          example:
+            error: not found
+            status: 404
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          example:
+            error: 'param is missing or the value is empty: article'
+            status: 422
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ..\components\schemas\Article.yaml

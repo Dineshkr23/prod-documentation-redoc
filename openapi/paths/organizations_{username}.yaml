@@ -1,0 +1,49 @@
+get:
+  summary: An organization
+  tags:
+    - organizations
+  security: []
+  description: >-
+    This endpoint allows the client to retrieve a single organization by their
+    username
+  operationId: getOrganization
+  parameters:
+    - name: username
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: An Organization
+      content:
+        application/json:
+          example:
+            type_of: organization
+            id: 323
+            username: org77
+            name: Skiles-Frami
+            summary: >-
+              Franzen seitan mustache cred. Gluten-free flannel gastropub hoodie
+              vinegar wolf mixtape.
+            twitter_username: org26
+            github_username: org5524
+            url: http://jacobs.com/assunta.rau
+            location: null
+            tech_stack: null
+            tag_line: null
+            story: null
+            joined_at: '2023-04-14T14:45:37Z'
+            profile_image: >-
+              /uploads/organization/profile_image/323/d1677329-759a-44e1-866e-c5be50e9593b.png
+          schema:
+            type: object
+            items:
+              $ref: ..\components\schemas\Organization.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          example:
+            error: not found
+            status: 404

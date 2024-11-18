@@ -1,0 +1,30 @@
+get:
+  summary: Followed Tags
+  tags:
+    - followed_tags
+    - tags
+  description: This endpoint allows the client to retrieve a list of the tags they follow.
+  operationId: getFollowedTags
+  responses:
+    '200':
+      description: A List of followed tags
+      content:
+        application/json:
+          example:
+            - id: 701
+              name: tag3
+              points: 1
+            - id: 702
+              name: tag4
+              points: 1
+          schema:
+            type: array
+            items:
+              $ref: ..\components\schemas\FollowedTag.yaml
+    '401':
+      description: unauthorized
+      content:
+        application/json:
+          example:
+            error: unauthorized
+            status: 401
