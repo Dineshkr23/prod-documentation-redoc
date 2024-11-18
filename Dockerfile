@@ -15,9 +15,8 @@ COPY openapi ./openapi
 # Expose the port for serving documentation
 EXPOSE 8080
 
-# Set environment variable for Redocly authentication
-ARG REDOCLY_AUTH_TOKEN
-ENV REDOCLY_AUTH_TOKEN=${REDOCLY_AUTH_TOKEN}
+# Set the token directly as an environment variable
+ENV REDOCLY_AUTH_TOKEN=sk_DtuLsrkUsiZY/eGXei8+G6SMfTA=_xb/MGSGLubk+GMHj8JU3hPDUXJlmgwHzCl4e3BdWUVI=
 
 # Command to run Redocly and serve documentation
 CMD ["sh", "-c", "redocly login --token $REDOCLY_AUTH_TOKEN && redocly preview-docs ./openapi/openapi.yaml --port 8080 --host 0.0.0.0 && rm -f /root/.redocly/credentials"]
